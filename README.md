@@ -1,6 +1,6 @@
 <p align="center">
     <a href="loughati arabic learning plateforme" target="_blank">
-        <img src="logo-big.png" width="250" alt="Sumrized" />
+        <img src="logo-big.png" width="250" alt="Loughati" />
     </a>
 </p>
 
