@@ -1,0 +1,14 @@
+@font-face {
+font-family: "Radomir Tikov";
+src: url("./fonts/Radomir-Tinkov-Gilroy-Bold.otf");
+}
+
+button{
+  border: none;
+  position: relative;
+  width:100%;
+  background-color: white;
+  margin: 5px 0px;
+}
+
+button:focus{outline:none;}
