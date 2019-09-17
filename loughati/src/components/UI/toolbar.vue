@@ -1,4 +1,5 @@
 <template lang="html">
+<b-container fluid>
     <b-row id="toolbar">
         <b-col cols="6">
           <nav>
@@ -11,12 +12,7 @@
               </ul>
           </nav>
         </b-col>
-
-        <b-col cols="3" >
-            <img src="../../assets/images/logo-mini.png" id="toolbar-logo" >
-        </b-col>
-
-        <b-col cols="3">
+        <b-col cols="6">
           <nav>
             <ul class="text-right">
               <li v-for="elem in rightMenuItems" :key="elem.key" >
@@ -28,6 +24,7 @@
           </nav>
         </b-col>
     </b-row>
+</b-container>
 </template>
 
 <script>
@@ -86,7 +83,9 @@ button:focus{outline:none;}
 
 span{
   color:#212529;
-font-family: 'Radomir Tikov';}
+font-family: 'Radomir Tikov';
+ font-size: 13px;
+}
 
 .text-right{
   text-align: right;

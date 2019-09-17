@@ -1,17 +1,15 @@
 <template lang="html">
   <b-container>
-    <b-row class="mt-5">
+    <b-row class="mt-5" style="margin: 3rem 0rem 3rem 0rem !important;}">
       <b-col cols="6" id="welcome-text">
-        apprends l'arabe plus facilement avec un nouveau système d'apprentissage pensé pour <u>vous</u>
-        <br>
+        <p>apprends l'arabe plus facilement avec un nouveau système d'apprentissage pensé pour <u>vous</u></p>
         <a>  <ArrowIcon/><span> commencer l'experience</span></a>
       </b-col>
       <b-col cols="6">
         <img src="../assets/images/logo-big.png" id="big-logo">
       </b-col>
     </b-row>
-
-    <b-row class="pt-5 " >
+    <b-row class="pt-5" >
       <b-col cols="3" class="carte">
         <img src="../assets/images/activite-yellow.png">
         <span>APPRENDS L'ARABE <br>EN ECOUTANT</span>
@@ -30,17 +28,16 @@
       </b-col>
     </b-row>
   </b-container>
-
 </template>
 
 <script>
-import ArrowIcon from 'vue-material-design-icons/ArrowRight.vue'
+  import ArrowIcon from 'vue-material-design-icons/ArrowRight.vue'
 
-export default {
-  components: {
-    ArrowIcon
+  export default {
+    components: {
+      ArrowIcon
+    }
   }
-}
 </script>
 
 <style lang="css" scoped>
@@ -48,18 +45,21 @@ export default {
 
 #big-logo
 {
-  width:100%;
+  width:75%;
+  position: relative;
+  left: 60px;
 }
 #welcome-text{
   font-family: 'Radomir Tikov';
-  font-size: 40px;
+  font-size: 38px;
   margin: auto;
-  color:black;
+  line-height: 36px;
+  color: #212529;
 }
 
 #welcome-text a {
-  color:red;
-  font-size: 30px;
+  color:#e03131;
+  font-size: 20px;
 }
 
 a:hover{
@@ -72,7 +72,7 @@ a:hover{
 }
 
 .carte img{
-width: 60%;
+width: 50%;
 }
 
 .carte span{
@@ -87,3 +87,4 @@ width: 60%;
       font-family: 'Radomir Tikov';
     }
 </style>
+
