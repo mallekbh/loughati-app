@@ -1,8 +1,8 @@
 <template>
-  <b-container fluid>
+	<section>
     <toolbar/>
     <router-view/>
-  </b-container>
+   	</section>
 </template>
 
 <script>
