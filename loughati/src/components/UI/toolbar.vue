@@ -4,7 +4,7 @@
           <nav>
             <ul>
               <li v-for="elem in leftMenuItems" :key="elem.key">
-                <button>
+                <button @click="goTo(elem.route)">
                   <span>{{elem.name}}</span>
                 </button>
               </li>
@@ -20,7 +20,7 @@
           <nav>
             <ul class="text-right">
               <li v-for="elem in rightMenuItems" :key="elem.key" >
-                <button>
+                <button  @click="goTo(elem.route)">
                   <span>{{elem.name}}</span>
                 </button>
               </li>
@@ -31,19 +31,25 @@
 </template>
 
 <script>
+import router from '../../router'
 export default {
   data(){
     return{
       leftMenuItems:[
-        {name:'A PROPOS', routerName:''},
-        {name:'LES ACTIVITÉS', routerName:''},
-        {name:'DICTIONNAIRE ARABE', routerName:''},
-        {name:'TEST DE NIVEAU', routerName:''}
+        {name:'A PROPOS', route:'/'},
+        {name:'LES ACTIVITÉS', route:'/activites'},
+        {name:'DICTIONNAIRE ARABE', route:''},
+        {name:'TEST DE NIVEAU', route:'/testniveau'}
       ],
       rightMenuItems:[
-        {name:'S\'INSCRIRE', routerName:''},
-        {name:'SE CONNECTER', routerName:''}
+        {name:'S\'INSCRIRE', route:''},
+        {name:'SE CONNECTER', route:''}
       ]
+    }
+  },
+  methods: {
+    goTo(item) {
+      router.push({path: item});console.log("kk");
     }
   }
 }
