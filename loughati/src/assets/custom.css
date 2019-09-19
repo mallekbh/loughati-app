@@ -1,6 +1,46 @@
 @font-face {
-font-family: "Radomir Tikov";
+font-family: "Radomir Tikov Bold";
 src: url("./fonts/Radomir-Tinkov-Gilroy-Bold.otf");
+}
+
+@font-face {
+font-family: "Radomir Tikov Thin";
+src: url("./fonts/Radomir-Tinkov-Gilroy-Thin.otf");
+}
+
+@font-face {
+font-family: "Radomir Tikov Light";
+src: url("./fonts/Radomir-Tinkov-Gilroy-Light.otf");
+}
+
+@font-face {
+font-family: "Radomir Tikov Medium";
+src: url("./fonts/Radomir-Tinkov-Gilroy-Medium.otf");
+}
+
+@font-face {
+font-family: "Radomir Tikov Medium Italic";
+src: url("./fonts/Radomir-Tinkov-Gilroy-MediumItalic.otf");
+}
+
+@font-face {
+font-family: "Radomir Tikov";
+src: url("./fonts/Radomir-Tinkov-Gilroy-Regular.otf");
+}
+
+@font-face {
+font-family: "Abdo Master";
+src: url("./fonts/Abdo-Master-DemiBold.otf");
+}
+
+@font-face {
+font-family: "Abdo Master Book";
+src: url("./fonts/Abdo-Master-Book.otf");
+}
+
+@font-face {
+font-family: "Abdo Master Medium";
+src: url("./fonts/Abdo-Master-Medium.otf");
 }
 
 button{

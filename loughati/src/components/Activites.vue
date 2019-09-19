@@ -1,9 +1,9 @@
 <template lang="html">
-<b-container fluid>
-  <b-row id="title" >
+<b-container>
+  <b-row id="title" class="py-3">
     <b-col cols="12">
       <img src="../assets/images/spot-turquoise.png">
-      <span>Activités تمارين</span>
+      <h1>Activités <span class="arabic">تمارين</span></h1>
     </b-col>
   </b-row>
   <b-row id="questionnaire" >
@@ -66,19 +66,10 @@ export default {
 #title img{
   width:15%;
 }
-#title span{
-  font-family: 'Radomir Tikov';
-  font-size: 30px;
-  position: absolute;
-  z-index: 999;
-  margin: 0 auto;
-  left: -10%;
-  top: 20%; /* Adjust this value to move the positioned div up and down */
-  text-align: center;
-  width: 60%; /* Set the width of the positioned div */
-  color:#212529;
-
-}
+ #title h1 {font-family: 'Radomir Tikov Bold'; font-size: 30px; position: absolute; z-index: 999; margin: 0 auto;left: 5%;top: 20%; width: 60%; color:#212529;
+  }
+  #title .arabic {font-size: 25px;}
+  .arabic { font-family: 'Abdo Master'; }
 
 #title{
   position: relative;

@@ -1,7 +1,7 @@
 <template lang="html">
   <b-container fluid>
     <b-row id="typeActivite">
-      <b-col cols="12">
+      <b-col cols="12" style="position: relative; bottom: 15px; left: 5px; font-size:12px;">
         <span>{{renderTypeText(activites[numActivite-1].type)}}</span>
       </b-col>
     </b-row>
@@ -58,14 +58,15 @@ export default {
   },
   methods: {
   renderTypeText(item) {
-    if(item === "image"){return ">APPRENDRE EN IMAGES"}
-    else if (item === "text") { return ""}
-    else if (item === "audio") { return ">APPRENDRE EN ÉCOUTANT"}
+    if(item === "image"){return "> APPRENDRE EN IMAGES"}
+    else if (item === "text") { return " APPRENDRE EN ÉCRIVANT"}
+    else if (item === "audio") { return "> APPRENDRE EN ÉCOUTANT"}
     else{return ""}
   },
   renderCorps(item){
-    if(item.type === 'image'){return "<img src= "+item.corps+" >";}
+    if(item.type === 'image'){return "<img class='thumbnail' src= "+item.corps+" >";}
     if(item.type === 'text') {return item.corps;}
+    
 
   },
   toChoice(item){

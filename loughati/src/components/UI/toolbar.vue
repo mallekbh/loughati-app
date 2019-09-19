@@ -1,7 +1,7 @@
 <template lang="html">
 <b-container fluid>
     <b-row id="toolbar">
-        <b-col cols="6">
+        <b-col cols="5">
           <nav>
             <ul>
               <li v-for="elem in leftMenuItems" :key="elem.key">
@@ -12,7 +12,12 @@
               </ul>
           </nav>
         </b-col>
-        <b-col cols="6">
+        <b-col cols="2">
+          <center>
+          <img src="../../assets/images/logo-mini.png" alt="">
+        </center>
+        </b-col>
+        <b-col cols="5">
           <nav>
             <ul class="text-right">
               <li v-for="elem in rightMenuItems" :key="elem.key" >
@@ -33,9 +38,9 @@ export default {
   data(){
     return{
       leftMenuItems:[
-        {name:'A PROPOS', route:'/'},
+        {name:'A PROPOS', route:'/apropos'},
         {name:'LES ACTIVITÉS', route:'/activites'},
-        {name:'DICTIONNAIRE ARABE', route:''},
+        {name:'DICTIONNAIRE ARABE', route:'/dico'},
         {name:'TEST DE NIVEAU', route:'/testniveau'}
       ],
       rightMenuItems:[
@@ -89,7 +94,7 @@ button:focus{outline:none;}
 
 span{
   color:#212529;
-font-family: 'Radomir Tikov';
+font-family: 'Radomir Tikov Bold';
  font-size: 13px;
 }
 
@@ -97,4 +102,5 @@ font-family: 'Radomir Tikov';
   text-align: right;
 }
 
+#toolbar img {width: 50%;}
 </style>

@@ -1,6 +1,6 @@
 <template lang="html">
-<b-container fluid>
-  <b-row id="title" >
+<b-container>
+  <b-row id="title" class="py-3">
     <b-col cols="12">
       <img src="../assets/images/spot-turquoise.png">
       <span>Test de niveau اختبار المستوى</span>
@@ -67,14 +67,13 @@ export default {
   width:15%;
 }
 #title span{
-  font-family: 'Radomir Tikov';
+  font-family: 'Radomir Tikov Bold';
   font-size: 30px;
   position: absolute;
   z-index: 999;
   margin: 0 auto;
   left: 5%;
   top: 20%; /* Adjust this value to move the positioned div up and down */
-  text-align: center;
   width: 60%; /* Set the width of the positioned div */
   color:#212529;
 

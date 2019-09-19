@@ -50,7 +50,7 @@
   left: 60px;
 }
 #welcome-text{
-  font-family: 'Radomir Tikov';
+  font-family: 'Radomir Tikov Bold';
   font-size: 38px;
   margin: auto;
   line-height: 36px;
@@ -68,23 +68,30 @@ a:hover{
 
 .carte{
   position: relative;
-  display: inline-block;
+  display: flex;
+  align-items: center;
 }
 
 .carte img{
-width: 50%;
+width: 47%;
 }
 
 .carte span{
+  font-size: 15px;
         position: absolute;
         z-index: 999;
         margin: 0 auto;
-        left: 10%;
-        top: 20%; /* Adjust this value to move the positioned div up and down */
         text-align: center;
         width: 60%; /* Set the width of the positioned div */
         color:#212529;
-      font-family: 'Radomir Tikov';
+      font-family: 'Radomir Tikov Medium';
+      font-weight: bold;
+    line-height: 18px;
+    font-weight: bold;
     }
+
+.carte span u {
+  font-size: 13px;
+}
 </style>
 
