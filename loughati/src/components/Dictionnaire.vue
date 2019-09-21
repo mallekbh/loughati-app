@@ -8,7 +8,7 @@
   </b-row>
   <b-row class="py-3" id="search" >
     <b-col cols="4">
-      <input class="form-control" type="text" placeholder="Écrire le mot à rechercher اكتب كلمة للبحث" aria-label="Search"/>
+      <input class="form-control"  v-model="search" type="text" placeholder="Écrire le mot à rechercher اكتب كلمة للبحث" aria-label="Search"/>
     </b-col>
     <b-col cols="3">
     </b-col>
@@ -19,93 +19,113 @@
     </b-col>
   </b-row>
   <b-row class="py-3">
-    <b-col cols="12"  id="dico-body" >
+    <b-col cols="12"  id="dico-body">
     <div class="dico-body-content-container left">
         <ul>
-          <li>كلمة</li>
-          <li>كلمة</li>
-          <li>كلمة</li>
-          <li>كلمة</li>
-          <li>كلمة</li>
-          <li>كلمة</li>
-          <li>كلمة</li>
-          <li>كلمة</li>
-          <li>كلمة</li>
-          <li>كلمة</li>
-          <li>كلمة</li>
-          <li>كلمة</li>
-          <li>كلمة</li>
-          <li>كلمة</li>
-          <li>كلمة</li>
-          <li>كلمة</li>
-          <li>كلمة</li>
-          <li>كلمة</li>
-          <li>كلمة</li>
-          <li>كلمة</li>
-          <li>كلمة</li>
-          <li>كلمة</li>
-          <li>كلمة</li>
-          <li>كلمة</li>
-          <li>كلمة</li>
+          <li v-for="item in  filterdWords">
+            <button @click="getEntry" v-bind:data-id="item.idLexicalEntry">{{ item.writtenForm }}</button>
+          </li>
         </ul>
     </div>
     <div class="dico-body-content-container right">
-      <div class="infos">
-        <div class="firstline">
-          <div class="translitiration">HML</div>
-          <a><img src="../assets/icons/speaker.png" alt=""></a>
-          <div class="writtenForm">حَمَلَ</div>
+      <div v-if="not_empty">
+        <div class="infos">
+          <div class="firstline">
+            <div class="translitiration">HML</div>
+            <!-- <a type="button"><img src="../assets/icons/speaker.png" alt=""></a> -->
+            <button><img src="../assets/icons/speaker.png" alt=""></button>
+            <div class="writtenForm">{{current_entry["infos"][0].writtenForm}}</div>
+          </div>
+          <div class="secondline">
+            <div class="postag">{{current_entry["infos"][0].partOfSpeech}}</div>
+            <div class="dot">.</div>
+            <div class="weight">0.75</div>
+          </div>
         </div>
-        <div class="secondline">
-          <div class="postag">Verbe</div>
-          <div class="dot">.</div>
-          <div class="weight">0.75</div>
+        <h1>Définitions</h1>
+        <div class="definitions">
+          <table>
+              <ul v-for="def in current_entry['senses']">
+                <li>
+                {{def.text}}
+                </li>
+            </ul>
+          </table>
         </div>
-        
-      </div>
-      <h1>Définitions</h1>
-      <div class="definitions">
-        <table>
-          <tr>
-            <td>هذه جملة باللغة العربية</td>
-            <td>هذه جملة باللغة العربية</td>
-          </tr>
-          <tr>
-            <td>هذه جملة باللغة العربية</td>
-            <td>هذه جملة باللغة العربية</td>
-          </tr>
-          <tr>
-            <td>هذه جملة باللغة العربية</td>
-            <td>هذه جملة باللغة العربية</td>
-          </tr>
-        </table>
-      </div>
-      <h1>Examples à partir d'un corpus</h1>
-      <div class="examples">
-        <table>
-          <tr>
-            <td>هذه جملة باللغة العربية</td>
-            <td>هذه جملة باللغة العربية</td>
-          </tr>
-          <tr>
-            <td>هذه جملة باللغة العربية</td>
-            <td>هذه جملة باللغة العربية</td>
-          </tr>
-          <tr>
-            <td>هذه جملة باللغة العربية</td>
-            <td>هذه جملة باللغة العربية</td>
-          </tr>
-          <tr>
-            <td>هذه جملة باللغة العربية</td>
-            <td>هذه جملة باللغة العربية</td>
-          </tr>
-        </table>
+        <h1>Examples à partir d'un corpus</h1>
+        <div class="examples">
+          <table>
+            <ul v-for="example in current_entry['examples']">
+                <li>{{example.leftText}}<span> {{example.middleText}} </span>{{example.rightText}}</li>
+            </ul>
+            <br>
+          </table>
+        </div>
       </div>
     </div>
   </b-col>
   </b-row>
 </b-container>
 </template>
+
+<script>
+  import axios from 'axios';
+  export default {
+  data() {
+    return {
+      search: '',
+      not_empty : false,
+      words: [],
+      current_entry: [],
+      errors: []
+    }
+  },
+  // Fetches posts when the component is created.
+  created() {
+    axios.get('http://localhost:5000/api/dico/words/')
+    .then(response => {
+      // JSON responses are automatically parsed.
+      this.words = response.data
+      console.log(this.entry)
+    })
+    .catch(e => {
+      this.errors.push(e)
+    })
+
+    // async / await version (created() becomes async created())
+    //
+    // try {
+    //   const response = await axios.get(`http://jsonplaceholder.typicode.com/posts`)
+    //   this.posts = response.data
+    // } catch (e) {
+    //   this.errors.push(e)
+    // }
+  },
+   methods: {
+    getEntry: function (event) {
+      var id = event.target.getAttribute('data-id')
+      axios.get("http://localhost:5000/api/dico/"+id)
+      .then((response)  =>  {
+        this.current_entry = response.data
+        this.not_empty = true
+        console.log(this.current_entry)
+      }, (error)  =>  {
+        this.loading = false
+      })
+    }
+  },
+  computed:
+  {
+      filterdWords:function()
+      {
+         var self=this;
+         return this.words.filter(function(cust){return cust.writtenForm.toLowerCase().indexOf(self.search.toLowerCase())>=0;});
+         //return this.customers;
+      }
+  }
+  
+}
+</script>
 
 <style lang="css" scoped>
   #title img{ width:15%; }
@@ -171,10 +191,20 @@
 
 .dico-body-content-container.left li{
   list-style: none;
-  line-height: 32px;
-  font-size: 20px;
+}
+
+.dico-body-content-container.left li button{
+  line-height: 20px;
+  font-size: 18px;
   color: #343a40;
-  font-family: "Abdo Master Medium"
+  text-align: right;
+  font-family: "Abdo Master Medium";
+  transition: 0.1s ease-in-out all;
+}
+
+.dico-body-content-container.left li button:hover {
+  color:#212529;
+  text-shadow: 0px 0px 3px #000000;
 }
 
 .dico-body-content-container.right h1 {
@@ -182,7 +212,7 @@
   text-align: right;
   font-size:13px;
   color:#ced4da;
-  margin-top:25px;
+  margin:25px 0px;
 }
 
 .dico-body-content-container.right h1:before {
@@ -194,6 +224,11 @@
     margin-left: -100%;
     margin-right: 10px;
     border-top: 1px solid #dee2e6;
+}
+
+.dico-body-content-container.right a[type:button] {
+  background:none;
+  border:none;
 }
 
 .dico-body-content-container.right .infos {
@@ -250,7 +285,12 @@
   color: #343a40;
 }
 
+.examples span{
+  color: #e03131;
+}
 
-
+.right ul {
+  list-style-type: none;
+}
 
 </style>

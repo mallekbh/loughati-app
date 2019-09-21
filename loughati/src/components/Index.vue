@@ -2,7 +2,7 @@
   <b-container>
     <b-row class="mt-5" style="margin: 3rem 0rem 3rem 0rem !important;}">
       <b-col cols="6" id="welcome-text">
-        <p>apprends l'arabe plus facilement avec un nouveau système d'apprentissage pensé pour <u>vous</u></p>
+        <p>Apprends l'arabe plus facilement avec un nouveau système d'apprentissage pensé pour <u>vous</u></p>
         <a>  <ArrowIcon/><span> commencer l'experience</span></a>
       </b-col>
       <b-col cols="6">
