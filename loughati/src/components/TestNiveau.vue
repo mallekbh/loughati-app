@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import activite from './UI/activite'
+import activite from './UI/activiteImage'
 export default {
   data(){
     return{

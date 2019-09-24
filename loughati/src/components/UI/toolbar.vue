@@ -39,7 +39,7 @@ export default {
     return{
       leftMenuItems:[
         {name:'A PROPOS', route:'/apropos'},
-        {name:'LES ACTIVITÉS', route:'/activites'},
+        {name:'LES ACTIVITÉS', route:'/activities/1'},
         {name:'DICTIONNAIRE ARABE', route:'/dico'},
         {name:'TEST DE NIVEAU', route:'/testniveau'}
       ],

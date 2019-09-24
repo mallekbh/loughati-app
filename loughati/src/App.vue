@@ -1,7 +1,8 @@
 <template>
 	<section>
-    <toolbar/>
-    <router-view/>
+		<notifications group="foo" position="center right"/>
+	    <toolbar/>
+	    <router-view :key="$route.fullPath"/>
    	</section>
 </template>
 

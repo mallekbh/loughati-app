@@ -31,13 +31,26 @@
       <div v-if="not_empty">
         <div class="infos">
           <div class="firstline">
-            <div class="translitiration">HML</div>
-            <!-- <a type="button"><img src="../assets/icons/speaker.png" alt=""></a> -->
-            <button><img src="../assets/icons/speaker.png" alt=""></button>
-            <div class="writtenForm">{{current_entry["infos"][0].writtenForm}}</div>
+            <div v-if="is_conjugable">
+                <b-button v-b-modal.modal-lg pill class="tasrif_button">التصريف</b-button>
+                <b-modal id="modal-lg" size="lg" title="جدول التصريف">
+                  <table>
+                    <tr v-for="form in current_entry['verbForms']">
+                      {{form}}
+                    </tr>
+                  </table>
+                </b-modal>
+            </div>
+            <button @click="speakUp" v-bind:line="current_entry['infos'][0].writtenForm"><img src="../assets/icons/speaker.png" alt=""></button>
+            <div  class="writtenForm">
+              {{current_entry['infos'][0].writtenForm}}
+            </div>
           </div>
           <div class="secondline">
-            <div class="postag">{{current_entry["infos"][0].partOfSpeech}}</div>
+            <div class="postag">
+              <span v-if="current_entry['infos'][0].partOfSpeech = 'verb'">فعل</span>
+              <span v-else>إسم</span>
+            </div>
             <div class="dot">.</div>
             <div class="weight">0.75</div>
           </div>
@@ -75,6 +88,7 @@
     return {
       search: '',
       not_empty : false,
+      is_conjugable : true,
       words: [],
       current_entry: [],
       errors: []
@@ -108,10 +122,19 @@
       .then((response)  =>  {
         this.current_entry = response.data
         this.not_empty = true
+        if(this.current_entry["infos"][0].partOfSpeech == "verb") {
+          this.is_conjugable = true
+        }else {
+          this.is_conjugable = false
+        }
         console.log(this.current_entry)
       }, (error)  =>  {
         this.loading = false
       })
+    },
+    speakUp: function (event) {
+      var text = event.target.getAttribute('line')
+      responsiveVoice.speak(text);
     }
   },
   computed:
@@ -239,7 +262,7 @@
 
 .dico-body-content-container.right .infos .firstline{
   display: flex;
-  width: 25%;
+  width: 35%;
   justify-content: space-between;
   align-items: center;
 }
@@ -291,6 +314,16 @@
 
 .right ul {
   list-style-type: none;
+}
+
+.tasrif_button {
+  background-color: #e03131;
+  border:none;
+  font-family: "Abdo Master Medium";
+}
+
+.postag span {
+  font-family: "Abdo Master Medium";
 }
 
 </style>

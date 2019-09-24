@@ -8,6 +8,12 @@
   <body>
     <div id="app"></div>
     <!-- built files will be auto injected -->
-    <!-- <script src="https://code.responsivevoice.org/responsivevoice.js?key=mRhXHtRl"></script> -->
+    <script>
+	var voicelist = responsiveVoice.getVoices();
+	responsiveVoice.setDefaultVoice("Arabic Male");
+	console.log(document.getElementById("textToBeSpoken").textContent)
+	responsiveVoice.speak(document.getElementById("textToBeSpoken").textContent);
+</script>
   </body>
 </html>
+

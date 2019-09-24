@@ -14,7 +14,7 @@
 
     <b-row id="corpsActivite" align-h="center">
       <b-col cols="4">
-        <div v-html="renderCorps(activites[numActivite-1])" id="content"></div>
+        <img src="../../assets/icons/play-button.svg" alt="">
       </b-col>
     </b-row>
 
@@ -70,10 +70,23 @@ export default {
 
   },
   toChoice(item){
-    for (var i = 0; i < item.propositions.length; i++) {
-      console.log(item.propositions.length);
-      if(this.selectedReponse === item.propositions[item.reponse]){console.log('true');}
-      else{console.log('false');}
+    if(this.selectedReponse != '') {
+      if(this.selectedReponse === item.propositions[item.reponse]){
+          this.$notify({
+            group: 'foo',
+            type: 'success',
+            text: 'أحْسَنت! إجَابَةٌ صَحِيحَة.'
+          });
+          this.selectedReponse = ''
+      }
+      else {
+        this.$notify({
+            group: 'foo',
+            type: 'error',
+            text: 'حَاوِلْ مَرّة أُخْرَى.'
+          });
+        this.selectedReponse = ''
+      }
     }
   }
   },

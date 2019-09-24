@@ -1,10 +1,11 @@
-import Vue from 'vue'
+ import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '@/components/Index'
 import TestNiveau from '@/components/TestNiveau'
 import Activites from '@/components/Activites'
 import Apropos from '@/components/Apropos'
 import Dico from '@/components/Dictionnaire'
+import Bravo from '@/components/Bravo'
 
 Vue.use(Router)
 
@@ -17,6 +18,11 @@ export default new Router({
       component: Index
     },
     {
+      path: '/bravo',
+      name: 'Bravo',
+      component: Bravo
+    },
+    {
       path: '/testniveau',
       name: 'TestNiveau',
       component: TestNiveau
@@ -24,6 +30,11 @@ export default new Router({
     {
       path: '/activites',
       name: 'Activites',
+      component: Activites
+    },
+    {
+      path: '/activities/:step',
+      name: 'Activities',
       component: Activites
     },
     {
